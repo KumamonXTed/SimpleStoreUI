@@ -139,9 +139,6 @@ open class StoreManager {
     
     private func retrieveProductInfo(productIds: Set<String>){
         SwiftyStoreKit.retrieveProductsInfo(productIds) { result in
-            result.retrievedProducts.forEach({ (p) in
-                print(p.localizedDescription)
-            })
             result.retrievedProducts.forEach({ (product) in
                 let priceString = product.localizedPrice!
                 print("Product: \(product.localizedDescription), price: \(priceString)")
