@@ -41,13 +41,13 @@ public struct Product{
     }
 }
 
-public protocol StoreManagerDelegate{
+@objc public protocol StoreManagerDelegate{
     func showHud()
     func hideHud()
     func purchaseSuccess(productId:String)
 }
 
-public class StoreManager {
+open class StoreManager {
     public static var shared = StoreManager()
     private init(){}
     private let userDefaults:UserDefaults = UserDefaults()
@@ -139,17 +139,21 @@ public class StoreManager {
     
     private func retrieveProductInfo(productIds: Set<String>){
         SwiftyStoreKit.retrieveProductsInfo(productIds) { result in
-            if let product = result.retrievedProducts.first {
+            result.retrievedProducts.forEach({ (p) in
+                print(p.localizedDescription)
+            })
+            result.retrievedProducts.forEach({ (product) in
                 let priceString = product.localizedPrice!
                 print("Product: \(product.localizedDescription), price: \(priceString)")
                 self.updateProductPrice(productId: product.productIdentifier, price: priceString)
-            }
-            else if let invalidProductId = result.invalidProductIDs.first {
+            })
+            result.invalidProductIDs.forEach({ (invalidProductId) in
                 print("Invalid Product Indentifier: \(invalidProductId)")
+            })
+            if let e = result.error {
+                print("Error: \(String(describing: e))")
             }
-            else {
-                print("Error: \(String(describing: result.error))")
-            }
+        
         }
     }
     
