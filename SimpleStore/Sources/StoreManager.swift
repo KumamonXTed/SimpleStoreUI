@@ -45,6 +45,8 @@ public struct Product{
     func showHud()
     func hideHud()
     func purchaseSuccess(productId:String)
+    func failPurchase(message:String)
+    func successPurchase(message:String)
 }
 
 open class StoreManager {
@@ -87,6 +89,7 @@ open class StoreManager {
             self.storeManagerDelegate?.hideHud()
             switch result {
             case .success(let purchase):
+                self.storeManagerDelegate?.successPurchase(message:"购买成功!")
                 print("Purchase Success: \(purchase.productId)")
                 self.postProductPurchase(purchase.productId)
             case .error(let error):
@@ -101,6 +104,19 @@ open class StoreManager {
                 case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
                 case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
                 }
+                
+                switch error.code {
+                case .unknown: self.storeManagerDelegate?.failPurchase(message: "Unknown error. Please contact support")
+                case .clientInvalid: self.storeManagerDelegate?.failPurchase(message: "Not allowed to make the payment")
+                case .paymentCancelled: break
+                case .paymentInvalid: self.storeManagerDelegate?.failPurchase(message: "The purchase identifier was invalid")
+                case .paymentNotAllowed: self.storeManagerDelegate?.failPurchase(message: "The device is not allowed to make the payment")
+                case .storeProductNotAvailable: self.storeManagerDelegate?.failPurchase(message: "The product is not available in the current storefront")
+                case .cloudServicePermissionDenied: self.storeManagerDelegate?.failPurchase(message: "Access to cloud service information is not allowed")
+                case .cloudServiceNetworkConnectionFailed: self.storeManagerDelegate?.failPurchase(message: "Could not connect to the network")
+                case .cloudServiceRevoked: self.storeManagerDelegate?.failPurchase(message: "User has revoked permission to use this cloud service")
+                }
+                
             }
         }
     }
@@ -110,15 +126,18 @@ open class StoreManager {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             self.storeManagerDelegate?.hideHud()
             if results.restoreFailedPurchases.count > 0 {
+                self.storeManagerDelegate?.failPurchase(message: "恢复内购失败! 原因:\(results.restoreFailedPurchases)")
                 print("Restore Failed: \(results.restoreFailedPurchases)")
             }
             else if results.restoredPurchases.count > 0 {
+                self.storeManagerDelegate?.successPurchase(message: "恢复内购成功!")
                 print("Restore Success: \(results.restoredPurchases)")
                 for purchase in results.restoredPurchases {
                     self.postProductPurchase(purchase.productId)
                 }
             }
             else {
+                self.storeManagerDelegate?.successPurchase(message: "没有需要恢复的内购项目.")
                 print("Nothing to Restore")
             }
         }
