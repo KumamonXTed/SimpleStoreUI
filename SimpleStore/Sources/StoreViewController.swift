@@ -24,8 +24,6 @@
 
 import UIKit
 import MBProgressHUD
-import UMAnalytics
-
 
 public class StoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView:UITableView!

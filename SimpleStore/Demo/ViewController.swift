@@ -58,6 +58,14 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : StoreManagerDelegate {
+    func failPurchase(message: String) {
+        
+    }
+    
+    func successPurchase(message: String) {
+        
+    }
+    
     //MARK:- HudDelegate
     public func showHud() {
         print("Show HUD")
