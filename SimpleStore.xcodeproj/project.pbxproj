@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		299B1B9AE17DE9641FA83FD8 /* Pods_SimpleStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BE7A163FD3EC215E2F2F8C /* Pods_SimpleStore.framework */; };
 		512578AA1FE53DC300E21467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512578A91FE53DC300E21467 /* AppDelegate.swift */; };
 		512578AC1FE53DC300E21467 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512578AB1FE53DC300E21467 /* ViewController.swift */; };
 		512578AF1FE53DC300E21467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512578AD1FE53DC300E21467 /* Main.storyboard */; };
@@ -19,6 +18,7 @@
 		512578C41FE53E9800E21467 /* StoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512578C01FE53E9800E21467 /* StoreViewController.xib */; };
 		512578C61FE53EA200E21467 /* StoreIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512578C51FE53EA200E21467 /* StoreIcons.xcassets */; };
 		512578C81FE5404300E21467 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512578C71FE5404300E21467 /* StoreManager.swift */; };
+		CB91E3CAA15A23CA7BF56F0C /* Pods_SimpleStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DA9351B8B2D76B7554596B /* Pods_SimpleStore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,8 @@
 		512578C51FE53EA200E21467 /* StoreIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = StoreIcons.xcassets; sourceTree = "<group>"; };
 		512578C71FE5404300E21467 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		5B4C08E8E226C6E148074801 /* Pods-SimpleStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore.debug.xcconfig"; sourceTree = "<group>"; };
+		68DA9351B8B2D76B7554596B /* Pods_SimpleStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		821B2F2DF307DC7C908FA285 /* Pods-SimpleStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore.release.xcconfig"; sourceTree = "<group>"; };
-		C9BE7A163FD3EC215E2F2F8C /* Pods_SimpleStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				299B1B9AE17DE9641FA83FD8 /* Pods_SimpleStore.framework in Frameworks */,
+				CB91E3CAA15A23CA7BF56F0C /* Pods_SimpleStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +108,7 @@
 		B110375EB7BFB2780B2891D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C9BE7A163FD3EC215E2F2F8C /* Pods_SimpleStore.framework */,
+				68DA9351B8B2D76B7554596B /* Pods_SimpleStore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -133,8 +133,8 @@
 				512578A21FE53DC300E21467 /* Sources */,
 				512578A31FE53DC300E21467 /* Frameworks */,
 				512578A41FE53DC300E21467 /* Resources */,
-				9DEB3299C0479F7E615CBA22 /* [CP] Embed Pods Frameworks */,
 				1046C3AE4A5B0A47E35BACFC /* [CP] Copy Pods Resources */,
+				684A2D2174474FD8A62C7E33 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,22 +202,25 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/../../Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore-resources.sh",
+				"${PODS_ROOT}/UMCCommonLog/UMCommonLog/UMCommonLog.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMCommonLog.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9DEB3299C0479F7E615CBA22 /* [CP] Embed Pods Frameworks */ = {
+		684A2D2174474FD8A62C7E33 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore-frameworks.sh",
+				"${SRCROOT}/../../Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 			);
@@ -228,7 +231,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-SimpleStore/Pods-SimpleStore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CAB0CE7E72DB9B2A5D0F6B39 /* [CP] Check Pods Manifest.lock */ = {
@@ -399,7 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z4J88UVN9G;
+				DEVELOPMENT_TEAM = SPTJD8WYRM;
 				INFOPLIST_FILE = SimpleStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -416,7 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z4J88UVN9G;
+				DEVELOPMENT_TEAM = SPTJD8WYRM;
 				INFOPLIST_FILE = SimpleStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
