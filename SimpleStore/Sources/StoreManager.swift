@@ -103,6 +103,9 @@ open class StoreManager {
                 case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
                 case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
                 case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
+                case .privacyAcknowledgementRequired, .unauthorizedRequestData, .invalidOfferIdentifier
+                , .invalidSignature, .missingOfferParams, .invalidOfferPrice:
+                    print("error: \(error.code)")
                 }
                 
                 switch error.code {
@@ -115,6 +118,11 @@ open class StoreManager {
                 case .cloudServicePermissionDenied: self.storeManagerDelegate?.failPurchase(message: "Access to cloud service information is not allowed")
                 case .cloudServiceNetworkConnectionFailed: self.storeManagerDelegate?.failPurchase(message: "Could not connect to the network")
                 case .cloudServiceRevoked: self.storeManagerDelegate?.failPurchase(message: "User has revoked permission to use this cloud service")
+                case .privacyAcknowledgementRequired, .unauthorizedRequestData, .invalidOfferIdentifier
+                    , .invalidSignature, .missingOfferParams, .invalidOfferPrice:
+                    self.storeManagerDelegate?.failPurchase(message: "error: \(error.code)")
+                @unknown default:
+                    self.storeManagerDelegate?.failPurchase(message: "error: \(error.code)")
                 }
                 
             }

@@ -82,9 +82,9 @@ public class StoreViewController: UIViewController, UITableViewDelegate, UITable
     
     private func showAlert(){
 //        let alert = UIAlertController(title: "Purchased", message: "You already purchased this item", preferredStyle: UIAlertControllerStyle.alert)
-        let alert = UIAlertController(title: "已购买", message: "您已经购买了这个项目", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "已购买", message: "您已经购买了这个项目", preferredStyle: UIAlertController.Style.alert)
         //title: "Ok"
-        alert.addAction(UIAlertAction(title: "好的", style: UIAlertActionStyle.default, handler:{ (ACTION :UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "好的", style: UIAlertAction.Style.default, handler:{ (ACTION :UIAlertAction!) in
         }))
         self.present(alert, animated: true, completion: nil)
     }
